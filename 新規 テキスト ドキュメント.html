@@ -205,46 +205,26 @@
     }
 
     .orb {
-      position: relative;
       width: 260px;
       height: 260px;
       border-radius: 999px;
       background:
-        radial-gradient(circle at 30% 20%, rgba(15,23,42,0.8) 0%, rgba(2,6,23,0.96) 65%, rgba(0,0,0,0.92) 100%),
-        linear-gradient(160deg, rgba(2,6,23,0.95), rgba(2,6,23,0.9));
+        radial-gradient(circle at 25% 15%, rgba(240,249,255,0.2) 0%, rgba(56,189,248,0.35) 38%, rgba(2,6,23,0.9) 100%),
+        linear-gradient(135deg, rgba(15,23,42,0.85), rgba(2,6,23,0.95));
       box-shadow:
-        0 0 36px rgba(15,23,42,0.75),
-        0 0 120px rgba(0,0,0,0.85);
-      border: 1px solid rgba(51,65,85,0.7);
+        0 0 60px rgba(56,189,248,0.6),
+        0 0 180px rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.45);
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .orb::after {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border-radius: 999px;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.04), transparent 70%);
-      z-index: 1;
-      pointer-events: none;
+      padding: 28px;
     }
 
     .orb-logo {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background-image: url('KITANOA_Logo.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 200%;
-      filter: drop-shadow(0 10px 28px rgba(0,0,0,0.6));
-      mix-blend-mode: screen;
-      transform: scale(1.02);
-      z-index: 2;
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
     }
 
     section {
@@ -566,7 +546,7 @@
 
       <div class="hero-visual">
         <div class="orb">
-          <div class="orb-logo" role="img" aria-label="KITANOAのロゴマーク"></div>
+          <img src="KITANOA_Logo.png" alt="KITANOAのロゴマーク" class="orb-logo" />
         </div>
       </div>
     </div>
