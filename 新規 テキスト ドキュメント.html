@@ -208,50 +208,23 @@
       width: 260px;
       height: 260px;
       border-radius: 999px;
-      background: radial-gradient(circle at 25% 15%, #f0f9ff 0%, #38bdf8 40%, #020617 100%);
+      background:
+        radial-gradient(circle at 25% 15%, rgba(240,249,255,0.2) 0%, rgba(56,189,248,0.35) 38%, rgba(2,6,23,0.9) 100%),
+        linear-gradient(135deg, rgba(15,23,42,0.85), rgba(2,6,23,0.95));
       box-shadow:
         0 0 60px rgba(56,189,248,0.6),
         0 0 180px rgba(15,23,42,0.9);
-      position: relative;
-      overflow: hidden;
       border: 1px solid rgba(148,163,184,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
     }
 
-    .orb-ring {
-      position: absolute;
-      inset: 12%;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.3);
-      box-shadow: 0 0 35px rgba(15,23,42,0.7) inset;
-    }
-
-    .orb-line {
-      position: absolute;
-      inset: 50% auto auto 50%;
-      width: 170%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(191,219,254,0.9), transparent);
-      transform-origin: left center;
-      opacity: 0.85;
-    }
-
-    .orb-line:nth-child(2) {
-      transform: translate(-50%, -50%) rotate(-18deg);
-    }
-
-    .orb-line:nth-child(3) {
-      transform: translate(-50%, -50%) rotate(18deg);
-    }
-
-    .orb-label {
-      position: absolute;
-      bottom: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(226,232,240,0.95);
+    .orb-logo {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
     }
 
     section {
@@ -573,10 +546,7 @@
 
       <div class="hero-visual">
         <div class="orb">
-          <div class="orb-ring"></div>
-          <div class="orb-line"></div>
-          <div class="orb-line"></div>
-          <div class="orb-label">KITANOA PLATFORM</div>
+          <img src="KITANOA_Logo.png" alt="KITANOAのロゴマーク" class="orb-logo" />
         </div>
       </div>
     </div>
