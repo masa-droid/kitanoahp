@@ -321,6 +321,77 @@
       background: rgba(2, 6, 23, 0.7);
     }
 
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .profile-card {
+      display: grid;
+      gap: 10px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2), 0 0 18px rgba(168, 85, 247, 0.2);
+    }
+
+    .profile-name {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .profile-title {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(2, 6, 23, 0.7);
+    }
+
+    .info-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .news-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .news-item {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(2, 6, 23, 0.7);
+      display: grid;
+      gap: 4px;
+    }
+
+    .news-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .news-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
     footer {
       border-top: 1px solid rgba(148, 163, 184, 0.2);
       padding: 26px 18px;
@@ -368,6 +439,9 @@
       </div>
       <nav class="nav-links">
         <a href="#vision">Vision</a>
+        <a href="#message">Message</a>
+        <a href="#company">Company</a>
+        <a href="#news">News</a>
         <a href="#solutions">Solutions</a>
         <a href="#global">Global</a>
         <a href="#contact">Contact</a>
@@ -395,6 +469,39 @@
         </div>
         <div class="orb">
           <img src="KITANOA_Logo.png" alt="KITANOA" />
+        </div>
+      </div>
+    </section>
+
+    <section id="message">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Founder Message</div>
+            <h2>創業者メッセージ</h2>
+          </div>
+          <p>
+            北海道から世界へ挑戦するために、テクノロジーと現場の知見を掛け合わせ、誰もが次の一歩を踏み出せる環境をつくります。
+            土地のポテンシャルを最大化し、共創パートナーと共に新しい産業モデルを築きます。
+          </p>
+        </div>
+        <div class="two-col">
+          <div class="profile-card">
+            <div class="profile-name">北野 翔太</div>
+            <div class="profile-title">Founder / CEO</div>
+            <p class="muted">
+              北海道生まれ。国内外のスタートアップと行政プロジェクトに従事し、観光・教育・物流・AI領域の事業立ち上げを経験。
+              フィールド検証と規制対応を両立し、地域からグローバルへ接続するプロダクトを推進しています。
+            </p>
+          </div>
+          <div class="card">
+            <h3>メッセージ</h3>
+            <p class="muted">
+              北海道には「挑戦する余白」があります。最先端の技術を持ち込みつつ、地域の文化や自然を尊重し、
+              世界から集まる人や企業が混ざり合う拠点を築きたい。そのために、規制理解とスピードを両立し、
+              伴走型でパートナーの挑戦を支えます。共に、まだ無い現実を形にしていきましょう。
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -449,6 +556,47 @@
               <span class="pill">Respect Chaos</span>
               <span class="pill">Dive in</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="company">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Company</div>
+            <h2>会社概要</h2>
+          </div>
+          <p>
+            北海道を起点に、観光・教育・物流・AIなど複数領域を横断する事業を展開。海外展開を見据えた多言語運用と、
+            リモート/現地ハイブリッド体制でスピーディに事業化を進めています。
+          </p>
+        </div>
+        <div class="info-grid">
+          <div class="info-item">
+            <strong>会社名</strong>
+            KITANOA Inc.（株式会社KITANOA）
+          </div>
+          <div class="info-item">
+            <strong>所在地</strong>
+            北海道を拠点に、東京・海外チームとリモート連携
+          </div>
+          <div class="info-item">
+            <strong>事業内容</strong>
+            観光/宿泊・越境EC・教育・ドローン物流・AI活用事業の企画/運営
+          </div>
+          <div class="info-item">
+            <strong>設立</strong>
+            2024年（新規事業開発実績を母体に設立）
+          </div>
+          <div class="info-item">
+            <strong>連携先</strong>
+            自治体、大学研究室、物流/観光/IT企業、海外パートナー
+          </div>
+          <div class="info-item">
+            <strong>連絡先</strong>
+            info@kitanoa.com（日本語/英語対応）
           </div>
         </div>
       </div>
@@ -590,6 +738,38 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">News / Press</div>
+            <h2>ニュース / プレスリリース</h2>
+          </div>
+          <p>
+            事業連携や新サービスの情報を随時発信していきます。今後はDjangoベースのCMSから更新できるよう準備中です。
+          </p>
+        </div>
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-date">2024-06-01</div>
+            <div><strong>越境ECラインの多言語版をクローズドローンチ</strong></div>
+            <p class="muted">北海道産品の英語/中国語ストアを公開し、海外パートナーとの実証を開始。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2024-04-15</div>
+            <div><strong>ドローン物流の寒冷地実証を開始</strong></div>
+            <p class="muted">自治体・物流企業と連携し、冬季の離島配送/点検に向けたフライトを実施。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2024-03-10</div>
+            <div><strong>学習観光プログラムを大学と共同開発</strong></div>
+            <p class="muted">大学研究室と連携し、フィールドワークとオンライン講義を組み合わせたプログラムを提供。</p>
+          </div>
+        </div>
+        <div class="news-note">※正式リリース情報は順次Django CMSへ移行予定です。</div>
       </div>
     </section>
 
