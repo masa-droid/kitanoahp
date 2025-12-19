@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>KITANOA Inc. | Hokkaido to the World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="KITANOA Inc. builds global-ready services from Hokkaido that blend technology, tourism, agriculture, and learning."
+  />
+  <style>
+    :root {
+      --bg: #030617;
+      --panel: #0b1224;
+      --accent: #38bdf8;
+      --accent-2: #a855f7;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border: rgba(148, 163, 184, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.08), transparent 30%),
+        radial-gradient(circle at 80% 0%, rgba(168, 85, 247, 0.12), transparent 28%),
+        #020617;
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 46px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-text strong {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo-text span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(168, 85, 247, 0.12));
+      color: var(--text-main);
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.18s ease, border 0.12s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.18);
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    section {
+      padding: 72px 0;
+      border-top: 1px solid rgba(31, 41, 55, 0.55);
+    }
+
+    .hero {
+      padding: 90px 0 60px;
+      border: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1.2;
+      margin: 16px 0 12px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    .orb {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      max-width: 94vw;
+      
+      
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      overflow: hidden;
+      
+    }
+
+    .orb img {
+      width: 125%;
+      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+    }
+
+    .section-head {
+      margin-bottom: 26px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      
+    }
+
+    .section-head h2 {
+      font-size: 22px;
+      letter-spacing: 0.02em;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      max-width: 540px;
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .cards-3 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 18px 38px rgba(2, 6, 23, 0.6);
+      display: grid;
+      gap: 10px;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.20), 0 0 18px rgba(168, 85, 247, 0.20);
+    }
+
+    .tag {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .card h3 {
+      font-size: 16px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .stats {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin-top: 10px;
+    }
+
+    .stat {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.15);
+      color: var(--text-main);
+      font-size: 12px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(2, 6, 23, 0.7);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .profile-card {
+      display: grid;
+      gap: 10px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2), 0 0 18px rgba(168, 85, 247, 0.2);
+    }
+
+    .profile-name {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .profile-title {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(2, 6, 23, 0.7);
+    }
+
+    .info-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .news-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .news-item {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(2, 6, 23, 0.7);
+      display: grid;
+      gap: 4px;
+    }
+
+    .news-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .news-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .form-group {
+      display: grid;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .input,
+    .textarea,
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.7);
+      color: var(--text-main);
+      font-size: 14px;
+      transition: border-color 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .input:focus,
+    .textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+
+    .submit-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 6px;
+    }
+
+    .status {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      padding: 26px 18px;
+      background: rgba(2, 6, 23, 0.92);
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .company-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .footer-company {
+      display: grid;
+      gap: 6px;
+      font-size: 12px;
+      max-width: 540px;
+    }
+
+    .company-label {
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 6px 12px;
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 12px 0 14px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .section-head {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img src="KITANOA_Logo.png" alt="KITANOA logo" />
+        <div class="logo-text">
+          <strong>KITANOA Inc.</strong>
+          <span>Hokkaido → Global</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#vision">Vision</a>
+        <a href="#message">Message</a>
+        <a href="#company">Company</a>
+        <a href="#news">News</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#global">Global</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn" href="#contact">Let’s Talk</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">HOKKAIDO TO THE WORLD</div>
+          <h1>北の大地から、<br />Global standard へ。</h1>
+          <p>
+            KITANOAは、北海道の豊かなフィールドを舞台に、新しい観光/食、教育、クロスボーダーコマース、
+            AI活用などを掛け合わせた事業を創出するスタートアップです。日本語・英語・中国語で実装し、
+            世界市場に接続します。
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#contact">事業連携・出資の相談</a>
+            <a class="btn" style="background: rgba(168,85,247,0.12); border-color: rgba(168,85,247,0.45);" href="#global">Global Deck</a>
+          </div>
+          <div class="hero-note">Bilingual / Remote-first / Regulatory-ready</div>
+        </div>
+        <div class="orb">
+          <img src="KITANOA_Logo.png" alt="KITANOA" />
+        </div>
+      </div>
+    </section>
+
+    <section id="message">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Founder Message</div>
+            <h2>創業者メッセージ</h2>
+          </div>
+          <p>
+            北海道から世界へ挑戦するために、テクノロジーと現場の知見を掛け合わせ、誰もが次の一歩を踏み出せる環境をつくります。
+            土地のポテンシャルを最大化し、共創パートナーと共に新しい産業モデルを築きます。
+          </p>
+        </div>
+        <div class="two-col">
+          <div class="profile-card">
+            <div class="profile-name">北野 翔太</div>
+            <div class="profile-title">Founder / CEO</div>
+            <p class="muted">
+              北海道生まれ。国内外のスタートアップと行政プロジェクトに従事し、観光・教育・物流・AI領域の事業立ち上げを経験。
+              フィールド検証と規制対応を両立し、地域からグローバルへ接続するプロダクトを推進しています。
+            </p>
+          </div>
+          <div class="card">
+            <h3>メッセージ</h3>
+            <p class="muted">
+              北海道には「挑戦する余白」があります。最先端の技術を持ち込みつつ、地域の文化や自然を尊重し、
+              世界から集まる人や企業が混ざり合う拠点を築きたい。そのために、規制理解とスピードを両立し、
+              伴走型でパートナーの挑戦を支えます。共に、まだ無い現実を形にしていきましょう。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vision">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Vision & Values</div>
+            <h2>北海道から「新しくおもしろい世界」を。</h2>
+          </div>
+          <p>
+            テクノロジー・教育・観光・農業など、産業を横断し、地域と世界を同時にアップデートする産業モデルを生み出します。
+            小さな実証を繰り返し、規制対応、越境展開まで伴走し、パートナーと共に拡張していきます。
+          </p>
+        </div>
+        <div class="grid cards-3">
+          <div class="card">
+            <div class="tag">Vision</div>
+            <h3>多種多様の人が集まり、働き、学び、挑戦できる地域を創造する</h3>
+            <p class="muted">
+              人々が魅力的に感じ、積極的に関係を持ちたいと思えるような地域を創造し、それらの人がさらに新たな価値を創造する好循環を生みます。
+            </p>
+            <div class="pill-row">
+              <span class="pill">Diversity</span>
+              <span class="pill">Plug Local</span>
+              <span class="pill">Virtuous Cycle</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="tag">Mission</div>
+            <h3>既存の前提を越え、北海道から“まだ無い現実”を成立させる。</h3>
+            <p class="muted">
+              寒冷地、広域人物流、観光の季節変動など、厳しい環境だからこそ磨かれるプロダクトをつくり、
+              東南アジア・オセアニア・北米に展開します。
+            </p>
+            <div class="pill-row">
+              <span class="pill">New Reality</span>
+              <span class="pill">Field Testing</span>
+              <span class="pill">Pacific Rim</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="tag">Values</div>
+            <h3>Notice, Respect, Speed.</h3>
+            <p class="muted">
+              気づきとスピードを重視し、多文化チームが混ざり合う「カオス」を歓迎します。人を中心に、
+              地域と世界に価値を届けます。
+            </p>
+            <div class="pill-row">
+              <span class="pill">Notice Trifles</span>
+              <span class="pill">Respect Chaos</span>
+              <span class="pill">Dive in</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section id="solutions">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Solutions</div>
+            <h2>事業ラインアップ</h2>
+          </div>
+          <p>
+            フィールドテストから商用化まで、複数のプロダクトを並走。地域課題を解決しながら、海外にも横展開できる
+            モジュールとして設計しています。
+          </p>
+        </div>
+        <div class="grid cards-3">
+          <div class="card">
+            <h3>観光</h3>
+            <p class="muted">旅館業/民泊・体験・地元を組み合わせた個性的な観光を開発。教育機関等と連携した学習観光やヘルスツーリズムなど、北海道の魅力を発掘し、提供していきます。</p>
+            <div class="pill-row">
+              <span class="pill">ESG travel</span>
+              <span class="pill">University partners</span>
+              <span class="pill">Local guides</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>越境EC・デジタルマーケティング</h3>
+            <p class="muted">北海道産品をストーリーと共に海外へ。生産者の生の声を届ける多言語EC、フルフィルメント、ブランド開発を提供。</p>
+            <div class="pill-row">
+              <span class="pill">Multi-currency</span>
+              <span class="pill">Logi partners</span>
+              <span class="pill">Story-driven</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>AI & Operations</h3>
+            <p class="muted">地域事業者向けに、AI支援オペレーション、ナレッジ管理、データ分析を提供し、生産性を底上げ。</p>
+            <div class="pill-row">
+              <span class="pill">GenAI PoC</span>
+              <span class="pill">Data pipeline</span>
+              <span class="pill">Security-first</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>教育</h3>
+            <p class="muted">北海道の地理的制約を解消する教育システムを提供。北海道から世界に挑戦していく人材を育てます。</p>
+            <div class="pill-row">
+              <span class="pill">Co-creation</span>
+              <span class="pill">Pilot → Scale</span>
+              <span class="pill">Impact metrics</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>ドローン物流・点検</h3>
+            <p class="muted">寒冷地・離島の配送、橋梁や送電線の点検、災害時の即応を、自治体と連携して実証中。</p>
+            <div class="pill-row">
+              <span class="pill">BVLOS 許認可</span>
+              <span class="pill">3D Mapping</span>
+              <span class="pill">Carbon tracking</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>共創スタジオ</h3>
+            <p class="muted">企業・自治体・大学と新規事業を共創。制度設計、補助金活用、現地チームセットアップまで伴走。</p>
+            <div class="pill-row">
+              <span class="pill">Co-creation</span>
+              <span class="pill">Pilot → Scale</span>
+              <span class="pill">Impact metrics</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>未来のプロダクト</h3>
+            <p class="muted">脱炭素モビリティ、アグリテック、寒冷地ロボティクスなど、世界市場を見据えた実験を継続。</p>
+            <div class="pill-row">
+              <span class="pill">R&D</span>
+              <span class="pill">IP design</span>
+              <span class="pill">Grant + Equity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="global">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Global Traction</div>
+            <h2>投資家・パートナー向けの現在地</h2>
+          </div>
+          <p>
+            スタートアップとしての透明性を重視し、バイリンガル資料・データ室を整備。海外企業との実証、
+            インバウンド・越境ECの受注拡大を進めています。
+          </p>
+        </div>
+        <div class="grid" style="gap: 18px;">
+          <div class="stats">
+            <div class="stat">
+              <strong>12+</strong>
+              海外・国内の共同プロジェクト（観光・物流・教育）
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              英語 / 日本語 / 中国語に対応した越境ECライン
+            </div>
+            <div class="stat">
+              <strong>1.5x</strong>
+              直近半年のインバウンド予約成長率（試験運用値）
+            </div>
+            <div class="stat">
+              <strong>2025</strong>
+              Series A を想定した資金調達準備（Data Room 提供可）
+            </div>
+          </div>
+          <div class="grid cards-3">
+            <div class="card">
+              <div class="tag">Partners</div>
+              <h3>自治体 / 企業 / 大学との連携</h3>
+              <p class="muted">
+                北海道内自治体、観光事業者、物流企業、大学研究室と連携し、規制対応・実証フィールドを確保。
+                国外パートナーとのPoCも拡大中です。
+              </p>
+            </div>
+            <div class="card">
+              <div class="tag">Go-to-Market</div>
+              <h3>多言語カスタマーサクセス</h3>
+              <p class="muted">
+                英語・日本語によるオンボーディング、サポート、KPIレポートを提供。マルチタイムゾーンで対応。
+              </p>
+            </div>
+            <div class="card">
+              <div class="tag">Compliance</div>
+              <h3>セキュリティ & ガバナンス</h3>
+              <p class="muted">
+                個人情報保護、輸出入、航空法、旅行業法などの専門家と連携。SOC2 / ISO27001 に向けた基盤を整備。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">News / Press</div>
+            <h2>ニュース / プレスリリース</h2>
+          </div>
+          <p>
+            事業連携や新サービスの情報を随時発信していきます。今後はDjangoベースのCMSから更新できるよう準備中です。
+          </p>
+        </div>
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-date">2024-06-01</div>
+            <div><strong>越境ECラインの多言語版をクローズドローンチ</strong></div>
+            <p class="muted">北海道産品の英語/中国語ストアを公開し、海外パートナーとの実証を開始。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2024-04-15</div>
+            <div><strong>ドローン物流の寒冷地実証を開始</strong></div>
+            <p class="muted">自治体・物流企業と連携し、冬季の離島配送/点検に向けたフライトを実施。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2024-03-10</div>
+            <div><strong>学習観光プログラムを大学と共同開発</strong></div>
+            <p class="muted">大学研究室と連携し、フィールドワークとオンライン講義を組み合わせたプログラムを提供。</p>
+          </div>
+        </div>
+        <div class="news-note">※正式リリース情報は順次Django CMSへ移行予定です。</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="tag">Contact</div>
+            <h2>一緒に、新しい産業モデルをつくりませんか？</h2>
+          </div>
+          <p>
+            事業連携・出資・メディア・採用のご相談を受け付けています。ピッチ資料（JP/EN）とデータ室の招待を
+            ご用意しています。
+          </p>
+        </div>
+        <div class="card" style="display: grid; gap: 12px;">
+          <h3>Reach us</h3>
+          <p class="muted">📧 info@kitanoa.com</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>Business / Partnership</strong><br />
+              ドローン・越境EC・体験観光・AI活用のPoC / 商用プロジェクト
+            </div>
+            <div class="timeline-item">
+              <strong>Investment</strong><br />
+              グローバル市場を見据えた資金調達のご相談、データ室の共有
+            </div>
+            <div class="timeline-item">
+              <strong>Careers</strong><br />
+              多文化リモートチームへの参画。エンジニア、BizDev、オペレーションを募集
+            </div>
+          </div>
+          <div class="pill-row">
+            <span class="pill">JP / EN OK</span>
+            <span class="pill">Remote-first</span>
+            <span class="pill">Based in Hokkaido</span>
+          </div>
+          <form id="contact-form" style="margin-top: 6px; display: grid; gap: 12px;">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="contact-name">お名前</label>
+                <input id="contact-name" class="input" name="name" type="text" placeholder="山田 太郎" required />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">メールアドレス</label>
+                <input id="contact-email" class="input" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="contact-purpose">お問い合わせ種別</label>
+                <select id="contact-purpose" name="purpose" required>
+                  <option value="事業連携">事業連携 / パートナーシップ</option>
+                  <option value="出資">出資に関するご相談</option>
+                  <option value="メディア">メディア取材</option>
+                  <option value="採用">採用 / チーム参画</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contact-subject">件名</label>
+                <input id="contact-subject" class="input" name="subject" type="text" placeholder="KITANOAへのお問い合わせ" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">お問い合わせ内容</label>
+              <textarea id="contact-message" class="textarea" name="message" placeholder="ご用件をご記入ください" required></textarea>
+            </div>
+            <div class="submit-row">
+              <button class="btn" type="submit">送信</button>
+            </div>
+            <div id="contact-status" class="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form");
+      const status = document.getElementById("contact-status");
+
+      if (!form || !status) return;
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const name = (formData.get("name") || "").toString().trim();
+        const email = (formData.get("email") || "").toString().trim();
+        const purpose = (formData.get("purpose") || "").toString();
+        const subjectInput = (formData.get("subject") || "").toString().trim();
+        const message = (formData.get("message") || "").toString().trim();
+
+        const subject = subjectInput || "KITANOAへのお問い合わせ";
+        const body = [
+          `お名前: ${name}`,
+          `メール: ${email}`,
+          `種別: ${purpose}`,
+          "",
+          message,
+        ]
+          .filter(Boolean)
+          .join("\n");
+
+        const mailto = `mailto:info@kitanoa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        status.textContent = "送信内容をメールにセットしています…お使いのメールソフトから送信を完了してください。";
+        window.location.href = mailto;
+      });
+    });
+  </script>
+
+  <footer id="company">
+    <div class="footer-inner">
+      <div>
+        <div>© KITANOA Inc. Hokkaido, Japan</div>
+        <div class="company-note">北海道を起点に観光/教育/物流/AIを横断する多言語スタートアップ</div>
+      </div>
+      <div class="footer-company">
+        <div class="company-label">会社概要</div>
+        <div class="company-grid">
+          <div><strong>会社名</strong> KITANOA Inc.（株式会社KITANOA）</div>
+          <div><strong>所在地</strong> 北海道・東京・海外リモート</div>
+          <div><strong>事業</strong> 観光/宿泊、越境EC、教育、ドローン物流、AI活用</div>
+          <div><strong>設立</strong> 2024年</div>
+          <div><strong>連絡先</strong> info@kitanoa.com（JP/EN）</div>
+          <div><strong>プライバシーポリシー</strong> <a href="privacy.html" style="color: var(--accent);">こちら</a></div>
+        </div>
+      </div>
+      <div class="pill-row" style="margin:0;">
+        <span class="pill" style="background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.35);">世界へ共創パートナー募集中</span>
+        <span class="pill" style="background:rgba(168,85,247,0.12); border:1px solid rgba(168,85,247,0.35);">Bilingual team ready</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
