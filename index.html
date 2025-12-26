@@ -1025,10 +1025,21 @@
     document.addEventListener("DOMContentLoaded", () => {
       const form = document.getElementById("contact-form");
       const status = document.getElementById("contact-status");
+      const submitButton = form?.querySelector('button[type="submit"]');
+      const MAIL_ENDPOINT = "https://formsubmit.co/ajax/info@kitanoa.com";
 
       if (!form || !status) return;
 
-      form.addEventListener("submit", (event) => {
+      const setButtonState = (isSubmitting) => {
+        if (!submitButton) return;
+
+        submitButton.disabled = isSubmitting;
+        submitButton.style.opacity = isSubmitting ? "0.6" : "1";
+        submitButton.style.cursor = isSubmitting ? "not-allowed" : "pointer";
+        submitButton.textContent = isSubmitting ? "送信中…" : "送信";
+      };
+
+      form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const formData = new FormData(form);
@@ -1038,7 +1049,8 @@
         const subjectInput = (formData.get("subject") || "").toString().trim();
         const message = (formData.get("message") || "").toString().trim();
 
-        const subject = subjectInput || "KITANOAへのお問い合わせ";
+        const subjectBase = subjectInput || "KITANOAへのお問い合わせ";
+        const subject = purpose ? `【${purpose}】${subjectBase}` : subjectBase;
         const body = [
           `お名前: ${name}`,
           `メール: ${email}`,
@@ -1051,8 +1063,41 @@
 
         const mailto = `mailto:info@kitanoa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        status.textContent = "送信内容をメールにセットしています…お使いのメールソフトから送信を完了してください。";
-        window.location.href = mailto;
+        try {
+          setButtonState(true);
+          status.textContent = "送信しています…しばらくお待ちください。";
+
+          const response = await fetch(MAIL_ENDPOINT, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              purpose,
+              subject,
+              message,
+              _subject: subject,
+              _replyto: email,
+              _template: "table",
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`Email send failed with status ${response.status}`);
+          }
+
+          status.textContent = "送信が完了しました。担当者より折り返しご連絡いたします。";
+          form.reset();
+        } catch (error) {
+          console.error("メール送信に失敗しました。メールクライアントで送信してください。", error);
+          status.textContent = "送信に失敗しました。お使いのメールソフトで送信してください。";
+          window.location.href = mailto;
+        } finally {
+          setButtonState(false);
+        }
       });
     });
   </script>
